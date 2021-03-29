@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-require("dotenv").config();
 
 const svg = (type, active) => {
   if (type === "home") {
@@ -8,7 +6,7 @@ const svg = (type, active) => {
       <svg
         class={`w-8 h-8 ${
           active
-            ? "text-blue-300 stroke-blue-300"
+            ? "text-blue-400"
             : "dark:stroke-current dark:text-gray-300"
         }`}
         xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +28,7 @@ const svg = (type, active) => {
       <svg
         class={`w-5 h-5 ${
           active
-            ? "text-blue-300 stroke-blue-300"
+            ? "text-blue-400"
             : "dark:stroke-current dark:text-gray-300"
         }`}
         xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +50,7 @@ const svg = (type, active) => {
       <svg
         class={`w-5 h-5 ${
           active
-            ? "text-blue-300 stroke-blue-300"
+            ? "text-blue-400"
             : "dark:stroke-current dark:text-gray-300"
         }`}
         xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +72,7 @@ const svg = (type, active) => {
       <svg
         class={`w-5 h-5 ${
           active
-            ? "text-blue-300 stroke-blue-300"
+            ? "text-blue-400"
             : "dark:stroke-current dark:text-gray-300"
         }`}
         xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +94,7 @@ const svg = (type, active) => {
       <svg
         class={`w-5 h-5 ${
           active
-            ? "text-blue-300 stroke-blue-300"
+            ? "text-blue-400"
             : "dark:stroke-current dark:text-gray-300"
         }`}
         xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +116,7 @@ const svg = (type, active) => {
       <svg
         class={`w-5 h-5 ${
           active
-            ? "text-blue-300 stroke-blue-300"
+            ? "text-blue-400"
             : "dark:stroke-current dark:text-gray-300"
         }`}
         xmlns="http://www.w3.org/2000/svg"

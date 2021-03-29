@@ -1,28 +1,41 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import AccountPage from "../pages/AccountPage";
 import HomePage from "../pages/HomePage";
-import MainComponentsPage from "../pages/MainComponentsPage";
 import SettingsPage from "../pages/SettingsPage";
-
+import FilesPage from "../pages/FilesPage";
+import DocumentsPage from "../pages/DocumentsPage";
+import AnalyticsPage from "../pages/AnalyticsPage";
 
 const PageController = (props) => {
   return (
-    <div class="flex-grow p-6 overflow-auto bg-gray-800">
+    <div class="flex-grow p-6 overflow-auto bg-gray-200 dark:bg-gray-800">
       <Switch>
-        <Route
+        <Route exact path="/" render={() => <HomePage {...props} />} />
+		<Route
           exact
-          path="/"
-          render={() => <HomePage {...props} site_name={site_name} />}
+          path="/files"
+          render={() => <FilesPage {...props} />}
         />
-        <Route
+		 <Route
           exact
-          path="/main-components"
-          render={() => <MainComponentsPage {...props} site_name={site_name} />}
+          path="/documents"
+          render={() => <DocumentsPage {...props} />}
+        />
+		 <Route
+          exact
+          path="/analytics"
+          render={() => <AnalyticsPage {...props} />}
         />
         <Route
           exact
           path="/settings"
-          render={() => <SettingsPage {...props} site_name={site_name} />}
+          render={() => <SettingsPage {...props} />}
+        />
+        <Route
+          exact
+          path="/account"
+          render={() => <AccountPage {...props} />}
         />
       </Switch>
     </div>

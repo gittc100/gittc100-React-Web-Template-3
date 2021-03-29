@@ -1,6 +1,6 @@
 import React from "react";
 
-const SettingPage = (props) => {
+const FilesPage = (props) => {
   return (
     <div class="grid grid-cols-3 gap-6">
       <div class="h-24 col-span-1 bg-gray-700"></div>
@@ -31,4 +31,4 @@ const SettingPage = (props) => {
   );
 };
 
-export default SettingPage;
+export default FilesPage;
