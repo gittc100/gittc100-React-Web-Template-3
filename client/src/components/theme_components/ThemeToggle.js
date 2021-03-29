@@ -1,68 +1,51 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Switch2Way from '../general_components/Switch2Way';
-import PTag from '../general_components/PTag';
-import Panel from '../panel_components/Panel';
-import GlobalContext from '../../context/GlobalContext';
-require('dotenv').config();
+import React, { useState, useEffect } from "react";
 
-const ThemeToggle = props => {
-	const context = useContext(GlobalContext);
-	const [switchPosition, setSwitchPosition] = useState(0);
-	let positionOptions = {
-		0: { key: 'light' },
-		1: { key: 'dark' },
-	};
-	const changeTheme = index => {
-		setSwitchPosition(index);
-		context.toggleTheme(positionOptions[index].key);
-		window.localStorage.setItem("chif_manager_theme", positionOptions[index].key);
-	};
-	useEffect(() => {
-		if (context.theme !== positionOptions[switchPosition].key) {
-			if (switchPosition === 0) {
-				setSwitchPosition(1);
-			} else if (switchPosition === 1) {
-				setSwitchPosition(0);
-			}
-		}
-	}, [context, context.theme]);
-	return (
-		<Panel
-			{...props}
-			panel_config={{
-				display: 'flex',
-				justify_content: 'center',
-				align_items: 'center',
-				flex_direction: 'row',
-				width: 'auto'
-			}}
-		>
-			<PTag
-				{...props}
-				ptag_config={{
-					title: 'Dark Mode:',
-					color: props => props.theme.panel_text,
-					margin: '0px 10px 0px 0px',
-					font_weight: '600',
-					font_size: '18px',
-				}}
-			/>
-			<Switch2Way
-				switch_config={{
-					position: switchPosition,
-					callback: changeTheme,
-					width: 'auto',
-					height: 'auto',
-					slide_width: '40px',
-					slide_height: 20,
-					slide_type: 'circle',
-					btn_radius: '50%',
-					btn_dim: 20,
-					margin: '0 0px 0 0',
-				}}
-			/>
-		</Panel>
-	);
+const ThemeToggle = () => {
+  const localStorage = window.localStorage;
+  const [switchPosition, setSwitchPosition] = useState(0);
+
+  const changeTheme = () => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setSwitchPosition(0);
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setSwitchPosition(1);
+    }
+  };
+
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+      setSwitchPosition(1);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setSwitchPosition(0);
+    }
+  }, []);
+
+  return (
+    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+      <input
+        checked={switchPosition}
+        type="checkbox"
+        name="toggle"
+        id="toggle"
+        class={`toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer ${
+			switchPosition === 1 ? "border-blue-400 right-0" : ""
+		  }`}
+        onClick={() => changeTheme()}
+      />
+      <label
+        for="toggle"
+        class={`toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer ${
+          switchPosition === 1 ? "bg-blue-400" : ""
+        }`}
+      ></label>
+    </div>
+  );
 };
 
 export default ThemeToggle;

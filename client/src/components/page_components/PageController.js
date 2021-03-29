@@ -1,32 +1,32 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import styled from 'styled-components';
-import HomePage from '../pages/HomePage';
-import MainComponentsPage from '../pages/MainComponentsPage';
-import SettingsPage from '../pages/SettingsPage';
-require('dotenv').config();
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import HomePage from "../pages/HomePage";
+import MainComponentsPage from "../pages/MainComponentsPage";
+import SettingsPage from "../pages/SettingsPage";
 
-const Controller = styled.div`
-	height: 100vh;
-	width: 100%;
-`;
 
-const site_name = 'CHIF MANAGER';
-
-const PageController = props => {
-	return (
-		<Controller>
-			<Switch>
-				<Route exact path="/" render={() => <HomePage {...props} site_name={site_name} />} />
-				<Route
-					exact
-					path="/main-components"
-					render={() => <MainComponentsPage {...props} site_name={site_name} />}
-				/>
-				<Route exact path="/settings" render={() => <SettingsPage {...props} site_name={site_name} />} />
-			</Switch>
-		</Controller>
-	);
+const PageController = (props) => {
+  return (
+    <div class="flex-grow p-6 overflow-auto bg-gray-800">
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => <HomePage {...props} site_name={site_name} />}
+        />
+        <Route
+          exact
+          path="/main-components"
+          render={() => <MainComponentsPage {...props} site_name={site_name} />}
+        />
+        <Route
+          exact
+          path="/settings"
+          render={() => <SettingsPage {...props} site_name={site_name} />}
+        />
+      </Switch>
+    </div>
+  );
 };
 
 export default PageController;
